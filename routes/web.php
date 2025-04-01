@@ -8,3 +8,32 @@ Route::get('/sobre-nos', [\App\Http\Controllers\SobreNosController::class,'sobre
 
 Route::get('/contato', [\App\Http\Controllers\ContatoController::class,'contato'])->name('site.contato');
 
+Route::prefix("/api")->group(function(){
+    Route::get('/produtos',function(){
+        return 'Produtos';
+    });
+    
+    Route::get('/fornecedores',function(){
+        return 'Fornecedores';
+    });
+    
+    Route::get('/clientes',function(){
+        return 'Clientes';
+    });
+    
+});
+
+Route::get('/login',function(){
+    return 'Login';
+});
+
+
+
+Route::fallback(function(){
+    
+    echo 'A rota acessada não existe.
+    <a href="'.route('site.principal').'"clique aqui</a>
+    ir para página inicial';
+
+});
+
